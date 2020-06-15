@@ -1,7 +1,5 @@
 package training.util.classes;
 
-import java.util.NoSuchElementException;
-
 /**
  * Collections which represent a link lists of nodes
  * 
@@ -121,19 +119,28 @@ public class DoubleLinkedList<T> {
 	/*
 	 * Complexity Time O(n)
 	 */
-	public void remove(long position) {
+	public T remove(long position) {
 		Node<T> nodeTemp = getNodeAtPosition(position);
-		deleteNode(nodeTemp);
 		size--;
+		return deleteNode(nodeTemp);
 	}
 
-	public void remove(T value) {
+	public T remove(T value) {
 		Node<T> nodeTemp = findNode(new Node<T>(value));
-		deleteNode(nodeTemp);
 		size--;
+		return deleteNode(nodeTemp);
 	}
 
-	public String printLinkedList() {
+	public T removeFirst() {
+		return deleteNode(head);
+	}
+
+	public T removeLast() {
+		return deleteNode(tail);
+	}
+
+	@Override
+	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		Node<T> nodeTemp = head;
 
@@ -147,11 +154,12 @@ public class DoubleLinkedList<T> {
 	}
 
 	private T getValueIfExists(Node<T> nodeTemp) {
-		if (nodeTemp == null) {
-			throw new NoSuchElementException("Value not found");
+		T value = null;
+		if (nodeTemp != null) {
+			value = nodeTemp.getValue();
 		}
 
-		return nodeTemp.getValue();
+		return value;
 	}
 
 	private Node<T> getNodeAtPosition(long position) {
@@ -183,7 +191,7 @@ public class DoubleLinkedList<T> {
 		return nodeTemp;
 	}
 
-	private void deleteNode(Node<T> node) {
+	private T deleteNode(Node<T> node) {
 
 		if (node.prevNode != null) {
 			node.prevNode.nextNode = node.nextNode;
@@ -197,7 +205,7 @@ public class DoubleLinkedList<T> {
 			tail = node.prevNode;
 		}
 
-		node = null;
+		return node.getValue();
 	}
 
 	private void linkNodeBefore(Node<T> node, Node<T> nodeRef) {

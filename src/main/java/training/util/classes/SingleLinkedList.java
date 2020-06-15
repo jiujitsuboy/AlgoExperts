@@ -1,7 +1,5 @@
 package training.util.classes;
 
-import java.util.NoSuchElementException;
-
 /**
  * Collections which represent a link lists of nodes
  * 
@@ -19,12 +17,11 @@ public class SingleLinkedList<T> {
 	}
 
 	public SingleLinkedList(T[] array) {
-		for(int index = 0;index<array.length;index++) {
+		for (int index = 0; index < array.length; index++) {
 			addElement(array[index]);
 		}
 	}
-	
-	
+
 	public long getSize() {
 		return size;
 	}
@@ -122,19 +119,27 @@ public class SingleLinkedList<T> {
 	/*
 	 * Complexity Time O(n)
 	 */
-	public void remove(long position) {
+	public T remove(long position) {
 		Node<T> nodeTemp = getNodeAtPosition(position - 1);
-		deleteNode(nodeTemp);
 		size--;
+		return deleteNode(nodeTemp);		
 	}
 
-	public void remove(T value) {
+	public T remove(T value) {
 		Node<T> nodeTemp = findPreviousNode(new Node<T>(value));
-		deleteNode(nodeTemp);
 		size--;
+		return deleteNode(nodeTemp);		
+	}
+	
+	public T removeFirst() {
+		return deleteNode(head);
 	}
 
-	@Override 
+	public T removeLast() {
+		return deleteNode(tail);
+	}
+
+	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		Node<T> nodeTemp = head;
@@ -149,11 +154,12 @@ public class SingleLinkedList<T> {
 	}
 
 	private T getValueIfExists(Node<T> nodeTemp) {
-		if (nodeTemp == null) {
-			throw new NoSuchElementException("Value not found");
+		T value = null;
+		if (nodeTemp != null) {
+			value = nodeTemp.getValue();
 		}
 
-		return nodeTemp.getValue();
+		return value;
 	}
 
 	private Node<T> getNodeAtPosition(long position) {
@@ -203,11 +209,11 @@ public class SingleLinkedList<T> {
 		return nodePrev;
 	}
 
-	private void deleteNode(Node<T> prevNode) {
+	private T deleteNode(Node<T> prevNode) {
 
 		Node<T> nodeToErase = null;
 
-		//erase head
+		// erase head
 		if (prevNode == null) {
 			head = head.nextNode;
 		} else {
@@ -218,9 +224,9 @@ public class SingleLinkedList<T> {
 			prevNode.nextNode = nodeToErase.nextNode;
 		} else {
 			tail = head;
-		}		
+		}
 
-		prevNode = null;
+		return prevNode.getValue();
 	}
 
 	private void linkNodeAfter(Node<T> node, Node<T> nodeRef) {
