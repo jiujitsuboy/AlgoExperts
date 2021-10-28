@@ -1,7 +1,6 @@
 package training.medium.binarysearchtrees;
 
 import training.util.classes.BST;
-import training.util.classes.TreeNode;
 
 /**
  * BTS implementation. 

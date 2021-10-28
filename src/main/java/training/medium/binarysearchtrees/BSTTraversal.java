@@ -74,8 +74,8 @@ public class BSTTraversal {
 	private static <T> void preOrderTransversal(TreeNode<T> tree, List<T> values) {
 		if (tree != null) {
 			values.add(tree.getValue());
-			inOrderTransversal(tree.getLeftChild(), values);
-			inOrderTransversal(tree.getRightChild(), values);
+			preOrderTransversal(tree.getLeftChild(), values);
+			preOrderTransversal(tree.getRightChild(), values);
 
 		}
 	}
@@ -91,8 +91,8 @@ public class BSTTraversal {
 	 */
 	private static <T> void postOrderTransversal(TreeNode<T> tree, List<T> values) {
 		if (tree != null) {
-			inOrderTransversal(tree.getLeftChild(), values);
-			inOrderTransversal(tree.getRightChild(), values);
+			postOrderTransversal(tree.getLeftChild(), values);
+			postOrderTransversal(tree.getRightChild(), values);
 			values.add(tree.getValue());
 
 		}

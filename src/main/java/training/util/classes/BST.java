@@ -13,8 +13,8 @@ package training.util.classes;
 public class BST<T extends Comparable<T>> {
 
 	private TreeNode<T> root;
-	
-	public TreeNode<T> getRoot(){
+
+	public TreeNode<T> getRoot() {
 		return root;
 	}
 
@@ -69,10 +69,17 @@ public class BST<T extends Comparable<T>> {
 	}
 
 	/**
-	 * Find the node with the minimum greater value
+	 * Find the node with the minimum greater value. There are two possible cases:
 	 * 
-	 * @param refNode
-	 * @return
+	 * 1 - the refNode has a right child. We take the (find the smallest value,
+	 * which going to the left child until we reach null) of this right child.
+	 * 
+	 * 2 - the refNode has no right child. we go up on the tree using his parent and
+	 * go up until we found a node that is the left node of it parent. That parent
+	 * is the successor
+	 * 
+	 * @param refNode node which we want to find it successor
+	 * @return successor node
 	 */
 	public TreeNode<T> findSuccessor(TreeNode<T> refNode) {
 
@@ -81,13 +88,17 @@ public class BST<T extends Comparable<T>> {
 
 		if (refNode != null) {
 			current = refNode.getRightChild();
-			while (current != null) {
-				succesor = current;
-				current = current.getLeftChild();
+			// case 1 - refNode has a right Child
+			if (current != null) {
+				while (current != null) {
+					succesor = current;
+					current = current.getLeftChild();
+				}
 			}
-			if(current==null) {
+			// case 2 - refNode has not a right child
+			else {
 				TreeNode<T> parent = refNode.getParent();
-				while(parent!= null && parent.getRightChild() == current) {
+				while (parent != null && parent.getRightChild() == current) {
 					current = parent;
 					parent = parent.getParent();
 				}
@@ -99,7 +110,16 @@ public class BST<T extends Comparable<T>> {
 	}
 
 	/**
-	 * Delete a node from the BST.
+	 * Delete a node from the BST. There are three cases:
+	 * 
+	 * 1- When the node is a leaf node. In this case just remove it.
+	 * 
+	 * 2- When the node has one child. we just remove the node and link the child's
+	 * node with the node's parent
+	 * 
+	 * 3- When the node has two children: We calculate the successor of the node,
+	 * swap the node with the successor and apply to the swapped node case 1 or case
+	 * 2
 	 * 
 	 * @param value
 	 */
@@ -109,6 +129,7 @@ public class BST<T extends Comparable<T>> {
 
 		if (current != null) {
 
+			//Case 3
 			if (current.getLeftChild() != null && current.getRightChild() != null) {
 				TreeNode<T> succesor = findSuccessor(current);
 				if (succesor != null) {
@@ -118,6 +139,7 @@ public class BST<T extends Comparable<T>> {
 
 				}
 			}
+			//Case 1 or Case 2
 			removeNodeWithOneorNoneChilds(current);
 		}
 
@@ -130,7 +152,8 @@ public class BST<T extends Comparable<T>> {
 	}
 
 	/**
-	 *  Complexity space O(log(N))
+	 * Complexity space O(log(N))
+	 * 
 	 * @param current
 	 * @return
 	 */
@@ -175,14 +198,18 @@ public class BST<T extends Comparable<T>> {
 	private void swap(TreeNode<T> node1, TreeNode<T> node2) {
 
 		T tempValue = node1.getValue();
+		TreeNode<T> tempParent = node1.getParent();
+
 		node1.setValue(node2.getValue());
+		node1.setParent(node2.getParent());
 		node2.setValue(tempValue);
+		node2.setParent(tempParent);
 	}
 
 	private void deleteNodeWithRighChild(TreeNode<T> node) {
-		TreeNode<T> parent = node.getParent();
+		TreeNode<T> parent = (node != null) ? node.getParent() : null;
 
-		if (parent != null && node != null) {
+		if (parent != null) {
 			if (parent.getLeftChild() == node) {
 				parent.setLeftChild(node.getRightChild());
 			} else {
@@ -193,20 +220,20 @@ public class BST<T extends Comparable<T>> {
 	}
 
 	private void deleteNodeWithLeftChild(TreeNode<T> node) {
-		TreeNode<T> parent = node.getParent();
+		TreeNode<T> parent = (node != null) ? node.getParent() : null;
 
-		if (parent != null && node != null) {
+		if (parent != null) {
 			if (parent.getLeftChild() == node) {
-				parent.setLeftChild(node.getRightChild());
+				parent.setLeftChild(node.getLeftChild());
 			} else {
-				parent.setRightChild(node.getRightChild());
+				parent.setRightChild(node.getLeftChild());
 
 			}
 		}
 	}
 
 	private void deleteLeafNode(TreeNode<T> node) {
-		TreeNode<T> parent = node.getParent();
+		TreeNode<T> parent = (node != null) ? node.getParent() : null;
 
 		if (parent != null) {
 			if (parent.getLeftChild() == node) {
