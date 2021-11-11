@@ -25,7 +25,7 @@ public class MinHeap<T extends Comparable<T>> {
 	 * repeating the process to every element behind the last parent of the list. We use SiftDown, instead
 	 * SiftUp, because SiftDown offer better performance because the majority of the elements are at the
 	 * bottom of the tree, and those take O(1) in swapping with there parents, in contrast to doing this
-	 * using SiftUp which start that the root and need to take the value down all the way, so the advantage 
+	 * using SiftUp which start at the root and need to take the value down all the way, so the advantage 
 	 * is that because the majority of nodes are at the bottom, and the operation at that level takes O(1) time
 	 * the complexity convey to O(n) instead O(n log(n)), which is the time it takes with SiftUp (N nodes per 
 	 * log n, which is the time it takes to do a shiftUp or shiftDown operation )
@@ -77,8 +77,9 @@ public class MinHeap<T extends Comparable<T>> {
 	 * and if his child is lesser than him, we swap it, and continue doing this
 	 * until we can't find a lesser child or reach the leaf of the tree.
 	 * 
-	 * Time: O(log(n))=> in very step we only traverse half of the nodes (taking
+	 * Time: O(log(n))=> in every step we only traverse half of the nodes (taking
 	 * lesser child)
+	 * 
 	 * 
 	 * Space 0(1)=> no additional structure used related to the input
 	 * 

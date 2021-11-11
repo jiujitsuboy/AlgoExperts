@@ -26,48 +26,54 @@ public class MinHeapConstruction {
 		
 		MinHeap<Integer> minHeap = new MinHeap<Integer>(numbers);
 		System.out.println(minHeap);
-				
+		
+		System.out.println("Insert 1");
 		minHeap.insert(1);
 		System.out.println(minHeap);
 		
-		System.out.println("minimun element: " + minHeap.remove());
+		System.out.println("remove minimun element: " + minHeap.remove());
 		System.out.println(minHeap);
-		System.out.println("minimun element: " + minHeap.remove());
+		System.out.println("remove minimun element: " + minHeap.remove());
 		System.out.println(minHeap);
-		System.out.println("minimun element: " + minHeap.remove());
+		System.out.println("remove minimun element: " + minHeap.remove());
 		System.out.println(minHeap);
-		System.out.println("minimun element: " + minHeap.remove());
+		System.out.println("remove minimun element: " + minHeap.remove());
 		System.out.println(minHeap);
-		System.out.println("minimun element: " + minHeap.remove());
+		System.out.println("remove minimun element: " + minHeap.remove());
 		System.out.println(minHeap);
-		System.out.println("minimun element: " + minHeap.remove());
+		System.out.println("remove minimun element: " + minHeap.remove());
 		System.out.println(minHeap);
-		System.out.println("minimun element: " + minHeap.remove());
+		System.out.println("remove minimun element: " + minHeap.remove());
 		System.out.println(minHeap);
+		System.out.println("Insert 5");
 		minHeap.insert(5);
 		System.out.println(minHeap);
-		System.out.println("minimun element: " + minHeap.remove());
+		System.out.println("remove minimun element: " + minHeap.remove());
 		System.out.println(minHeap);
-		System.out.println("minimun element: " + minHeap.remove());
+		System.out.println("remove minimun element: " + minHeap.remove());
 		System.out.println(minHeap);
-		System.out.println("minimun element: " + minHeap.remove());
+		System.out.println("remove minimun element: " + minHeap.remove());
 		System.out.println(minHeap);
+		System.out.println("Insert 2");
 		minHeap.insert(2);
 		System.out.println(minHeap);
-		System.out.println("minimun element: " + minHeap.remove());
+		System.out.println("remove minimun element: " + minHeap.remove());
 		System.out.println(minHeap);
+		System.out.println("Insert 100");
 		minHeap.insert(100);
 		System.out.println(minHeap);
+		System.out.println("Insert 4");
 		minHeap.insert(4);
 		System.out.println(minHeap);
+		System.out.println("Insert 3");
 		minHeap.insert(3);
 		System.out.println(minHeap);
+		System.out.println("Insert 2");
 		minHeap.insert(2);
 		System.out.println(minHeap);
+		System.out.println("Insert 1");
 		minHeap.insert(1);
 		System.out.println(minHeap);
-		
-		
 	}	
 
 }
