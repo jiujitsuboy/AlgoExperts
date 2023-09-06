@@ -44,7 +44,7 @@ public class ThreeNumberSum {
 
 	/**
 	 * Use 3 pointer, one starting in the most left corner and two others, which come across together depending
-	 * if the result of the sum is greater or lesser that the targer
+	 * if the result of the sum is greater or lesser that the target
 	 * Complexity: Time O(n^2)
 	 *             Space O(n)
 	 * @param array
@@ -60,7 +60,7 @@ public class ThreeNumberSum {
 		int num3 = array.length - 1;
 		int sum = 0;
 		
-		Arrays.sort(array); // O(n)
+		Arrays.sort(array); // O(log n)
 		
 		while (num1 < array.length - 2) {
 			

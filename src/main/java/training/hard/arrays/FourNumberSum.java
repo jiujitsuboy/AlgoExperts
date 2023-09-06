@@ -59,7 +59,7 @@ public class FourNumberSum {
 	 * loop2 = goes from current + 1 to n. This one sum the number from loop 1 to
 	 * every number after it and gets the difference of that sum - target, so we can
 	 * look for that difference in the Map. if the difference exists, we found a
-	 * valid cuadruplet and we store it in the cuadruplet list.
+	 * valid cuadruplet, and we store it in the quadruplet list.
 	 * 
 	 * loop3 = goes from 0 to the number before the number from loop 1. we use this
 	 * loop to generate all the pairs combinations between the loop 1 number and

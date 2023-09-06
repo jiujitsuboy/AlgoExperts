@@ -31,8 +31,8 @@ public class InvertBinaryTree {
 		TreeNode<Double> tree = bst.getRoot();
 
 		invertTreeRecursive(tree);
-		invertTreeIterative(tree);
-		
+//		invertTreeIterative(tree);
+
 		System.out.println(bst);
 		
 
@@ -40,8 +40,10 @@ public class InvertBinaryTree {
 
 	/**
 	 * Interchange the children node of the current node and call again the method
-	 * for each child Complexity: Time O(N) Space O(d)=> d is the length of the
-	 * longest branch we traverse. d = log(n) -> because this is the length of a
+	 * for each child
+	 *
+	 * Complexity: Time O(N)
+	 * Space O(d)=> d is the length of the longest branch we traverse. d = log(n) -> because this is the length of a
 	 * balanced binary tree
 	 * 
 	 * @param <T>

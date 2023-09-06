@@ -6,8 +6,13 @@ import java.util.Stack;
 
 import training.util.classes.TreeNode;
 
-public class BranchSums {
+/**
+      			10
+        5         13
+     1     7   11     15
 
+*/
+public class BranchSums {
 	public static void main(String[] args) {
 		TreeNode<Double> node15 = new TreeNode<Double>(15d, null, null);
 		TreeNode<Double> node11 = new TreeNode<Double>(11d, null, null);

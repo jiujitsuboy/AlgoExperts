@@ -21,7 +21,7 @@ public class SubArraySort {
 	/**
 	 * We iterate over the full array, checking if the current number is in order
 	 * (we compare to the previous and next value),if the value is out of order, we
-	 * keep track of the minimum and maximum value of those subset of unordered
+	 * keep track of the minimum and maximum value of this subset of unordered
 	 * numbers. At the end we take the minimum and maximum values and find their
 	 * respective position in the array where they become in order, and those two
 	 * positions resemble the sub array indexes that represent the sub array to sort

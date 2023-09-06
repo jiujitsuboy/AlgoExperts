@@ -10,10 +10,16 @@ package training.medium.dynamicprogramming;
 public class NumberOfWaysToMakeChange {
 
 	public static void main(String[] args) {
-		int target = 10000;
+		int target = 6;
+
+		int[] denominations = new int[] { 1, 5 };
+
+
+//		int target = 10000;
+
 //		int[] denominations = new int[] { 1, 5, 10, 25 };
 
-		int[] denominations = new int[] { 2, 5 };
+//		int[] denominations = new int[] { 2, 5 };
 
 		int res = 0;
 
@@ -79,7 +85,7 @@ class SolutionsNumberOfWaysToMakeChange {
 
 	/**
 	 * cache approach,where I found all the combinations but only process those that
-	 * I did´t process before , for any repeated combination, I just pick the cache
+	 * I didï¿½t process before , for any repeated combination, I just pick the cache
 	 * value.
 	 * 
 	 * Complexity: Time O(d*t) => d = denominations and t = target

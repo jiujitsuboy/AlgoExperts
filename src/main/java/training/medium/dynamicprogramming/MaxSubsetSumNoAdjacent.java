@@ -11,7 +11,9 @@ public class MaxSubsetSumNoAdjacent {
 	public static void main(String[] args) {
 
 //		int[] array = new int[] {7, 10, 12, 7, 9, 14};
-		int[] array = new int[] { 14, 9, 7, 12, 10, 7 };
+//		int[] array = new int[] { 14, 9, 7, 12, 10, 7 };
+
+		int[] array = new int[] { 1, 2 };
 
 		System.out.println(calculateMaxSum(array));
 
@@ -22,7 +24,7 @@ public class MaxSubsetSumNoAdjacent {
 	 * for smaller problems and build up from those to solve the biggest), So we
 	 * start to find the max sum for first number in the array, which is it self,
 	 * them we found the max number between array[0] and array[1] (the max, nor the
-	 * sum, because they are adjacent, so we can´t sum them), and from 2 onwards, we
+	 * sum, because they are adjacent, so we can't sum them), and from 2 onwards, we
 	 * use the following formula:
 	 * 
 	 * _ maxSum[i]= | | maxSum[i-1] | maxSum[i-2] + array[i] |_
@@ -48,6 +50,7 @@ public class MaxSubsetSumNoAdjacent {
 			if (array.length > 1) {
 				firstValue = array[0];
 				secondValue = Math.max(firstValue, array[1]);
+				currentValue = Math.max(secondValue, firstValue);
 
 				for (int pos = 2; pos < array.length; pos++) {
 					currentValue = Math.max(secondValue, firstValue + array[pos]);

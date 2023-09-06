@@ -1,5 +1,7 @@
 package training.easy.arrays;
 
+import java.util.List;
+
 /**
  * Search if the sub array exists with the array, conserving their relative
  * position.
@@ -44,6 +46,19 @@ public class ValidateSubsequence {
 		}
 
 		return subArrayIndex == subArray.length;
+	}
+
+	public static boolean checkIfIsSubArray2(List<Integer> array, List<Integer> subArray) {
+
+		int subArrayIndex = 0;
+		for (int arrayIndex = 0; arrayIndex < array.size() && subArrayIndex < subArray.size(); arrayIndex++) {
+
+			if (subArray.get(subArrayIndex) == array.get(arrayIndex)) {
+				subArrayIndex++;
+			}
+		}
+
+		return subArrayIndex == subArray.size();
 	}
 
 }

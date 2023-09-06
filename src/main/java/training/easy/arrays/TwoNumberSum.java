@@ -12,17 +12,19 @@ import java.util.Map;
 public class TwoNumberSum {
 
 	public static void main(String[] args) {
-		int[] numbers = new int[] { 1, -5, 8, -9, 3, 5, -3, 2, -20 };
-		int target = -4;
-		int[] result1 = findTwoNumbers1(numbers, target);
-		System.out.println(String.format("%d + %d = %d", result1[0], result1[1], target));
+//		int[] numbers = new int[] { 1, -5, 8, -9, 3, 5, -3, 2, -20 };
+//		int target = -4;
+		int[] numbers = new int[] { 0, -1, 2, -3, 1 };
+		int target = -2;
+//		int[] result1 = findTwoNumbers1(numbers, target);
+//		System.out.println(String.format("%d + %d = %d", result1[0], result1[1], target));
 
 		int[] result2 = findTwoNumbers2(numbers, target);
 		System.out.println(String.format("%d + %d = %d", result2[0], result2[1], target));
 		
 		
-		int[] result3 = findTwoNumbers3(numbers, target);
-		System.out.println(String.format("%d + %d = %d", result3[0], result3[1], target));
+//		int[] result3 = findTwoNumbers3(numbers, target);
+//		System.out.println(String.format("%d + %d = %d", result3[0], result3[1], target));
 
 	}
 
@@ -41,7 +43,7 @@ public class TwoNumberSum {
 				}
 			}
 		}
-		return result;
+		return (result[0] == 0 && result[1] == 0) ? new int[0] : result;
 	}
 
 	// 0(n) time complexity
@@ -64,7 +66,7 @@ public class TwoNumberSum {
 			}
 		}
 
-		return result;
+		return (result[0] == 0 && result[1] == 0) ? new int[0] : result;
 	}
 
 	// 0(nlog(n)) time complexity
@@ -93,6 +95,6 @@ public class TwoNumberSum {
 			
 		}
 
-		return result;
+		return (result[0] == 0 && result[1] == 0) ? new int[0] : result;
 	}
 }
